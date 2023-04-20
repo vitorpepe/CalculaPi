@@ -1,1 +1,0 @@
-# CalculaPi - Com Mutex
