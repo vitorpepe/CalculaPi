@@ -1,2 +1,0 @@
-# CalculaPi - Sem Mutex
-
