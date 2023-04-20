@@ -6,7 +6,21 @@ O programa então inicializa o vetor de somas parciais com zero, cria as threads
 
 Após todas as threads terem concluído o processamento, o programa soma as somas parciais de todas as threads para obter o valor final de Pi, e multiplica o resultado por 4 para obter o valor correto. O programa imprime o valor final de Pi e libera a memória alocada para os vetores.
 
-
-
 # CalculaPi - Com Mutex
+
+A variável "sum" é um vetor que armazena a soma parcial calculada por cada thread. Essas somas parciais são posteriormente somadas para obter a estimativa final de Pi, ela é protegida pelas funçoes "pthread_mutex_lock" e "pthread_mutex_unlock" de acessos simultâneos e garantir que apenas uma thread por vez possa atualizar o valor de "sum".
+
+O código começa lendo o número de threads que serão utilizadas para calcular Pi. Em seguida, ele aloca memória para os vetores thread_handles e sum, inicia o mutex e inicializa o vetor "sum" com zero para cada thread.
+
+Em seguida, ele cria as threads utilizando a função "pthread_create". Para cada thread criada, o índice da thread é passado como argumento para a função "Thread_sum".
+
+Depois que todas as threads foram criadas, o programa espera que todas as threads terminem utilizando a função "pthread_join".
+
+Após todas as threads terem terminado, o valor de Pi é calculado a partir das somas parciais e é impresso na tela. Em seguida, o mutex é finalizado e a memória alocada para "thread_handles" e "sum" é liberada.
+
+# Comparação
+
+Na implementação sem mutex, as threads podiam acessar e atualizar o vetor de soma parcial simultaneamente, o que poderia levar a resultados inconsistentes. Isso ocorre porque a operação de atualização envolve uma leitura, uma modificação e uma escrita no vetor, e as threads poderiam intercalar suas operações, causando inconsistências.
+
+Com o uso do mutex, as threads obtêm acesso exclusivo ao vetor de soma parcial, garantindo que cada operação seja executada completamente antes de outra thread começar a trabalhar no vetor. Assim, o uso do mutex ajuda a garantir que o resultado final seja consistente e correto.
 
