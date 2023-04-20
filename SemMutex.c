@@ -1,3 +1,12 @@
+/*
+ Sistemas Operacionais
+ Prof. Eduardo Ferreira
+Calculo de Pi - Sem Mutex
+ Nome: Vitor Pepe
+ TIA: 31852963
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
